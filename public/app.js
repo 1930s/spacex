@@ -6,15 +6,13 @@ $(document).ready(function () {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	}); 
 	
-	var geocoder = new google.maps.Geocoder();
-
 	map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push($("#status")[0]); 
 	
 	function set_status(text) {
 		$("#status-text").text(text); 
 	}
 	
-	set_status("Downloading ground station coordinates..."); 
+	set_status("Downloading coordinates..."); 
 	$.ajax({
 		url: "stations"
 	}).done(function (response) {
@@ -38,29 +36,6 @@ $(document).ready(function () {
           			info_window.open(map, marker);
         		}
       		})(marker, i));
-		}
-		for (i = 0; i < markers.length; i++) {
-			set_status("Resolving station " + (i+1) + " of " + markers.length); 
-			geocoder.geocode({'latLng': markers[i].getPosition()}, function(results, status) {
-				if (status == google.maps.GeocoderStatus.OK) {
-					var country = null; 
-					var j; 
-					for (j = 0; j < results.length; j++) {
-						var k; 
-						for (k = 0; k < results[j].length; k++) {
-							if (!country && $.inArray("country", results[j][k].types) != -1) {
-								country = results[j][k].short_name; 
-							}
-						}
-					}
-					if (country) {
-						console.log(country); 
-						// ...
-					}
-				} else {
-					console.log(status); 
-				}
-			}); 
 		}
 		set_status(""); 
 	}).fail(function (response) {
