@@ -20,3 +20,8 @@ body
 {
 	position: absolute; 
 }
+
+#status-text
+{
+	font-family: sans-serif; 
+}
