@@ -1,6 +1,6 @@
 This repository contains my solution to a coding exercise that is part of the selection process for software engineering interns at [SpaceX](http://spacex.com). The exercise specification calls for a web application that plots NASA ground station coordinates on an interactive map. 
 
-![screenshot](http://dl.dropbox.com/u/12494368/spacex_screenshot.png "screenshot")
+![screenshot](http://i.imgur.com/fx1bb.png "screenshot")
 
 The back end is implemented in [Ruby](http://ruby-lang.org) using the [Sinatra](http://sinatrarb) microframework. The server hosts the static files for the HTML/CSS/JS interface and connects to NASA's SOAP web service to access ground station coordinates. The coordinates are transformed into JSON and asynchronously loaded by the front end interface.
 
